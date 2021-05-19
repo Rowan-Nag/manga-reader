@@ -1,6 +1,7 @@
 .MangaTitle{
     color:darkblue;
     font-size: 20px;
+    cursor: pointer;
 }
 .MangaDescription{
     max-height:160px;

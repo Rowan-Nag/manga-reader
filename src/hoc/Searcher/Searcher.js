@@ -48,6 +48,7 @@ function Searcher(){
                             return(<MangaCard 
                                 data={manga.data} 
                                 setReaderData = {setReaderData} 
+                                toggleVisible = {toggleVisible}
                                 key = {manga.data.id} />)
                         }
                         return null
