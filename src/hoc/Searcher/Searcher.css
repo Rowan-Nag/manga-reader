@@ -1,0 +1,21 @@
+.Searcher{
+    text-align: center;
+    width:60%;
+    margin:auto;
+}
+input{
+    width:300px;
+    text-align: center;
+}
+.ListClose{
+    width:50px;
+    height:50px;
+    font-size: 30px;
+    position:absolute;
+    top:35px;
+    left:15px;
+    cursor:pointer;
+}
+.ListClose:hover{
+    color:rgb(138, 111, 61)
+}

@@ -1,0 +1,67 @@
+.ListContainer{
+    width: 100%;
+    min-height: 100%;
+    left:0px;
+    top:0px;
+    position:absolute;
+    background-color: rgb(53, 12, 107);
+    opacity: 1;
+
+    transition: opacity .1s ease;
+}
+.ListInner{
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+}
+.ListInfo{
+    padding:40px;
+    margin:auto;
+    width:50%;
+    background-color:rgb(41, 12, 80);
+}
+.ListTitle{
+    font-size: 24px;
+}
+.ListDesc{
+    padding-left:20px
+}
+
+
+.ListDisplay{
+    display:flex;
+    flex-direction: column;
+    padding:40px;
+    margin:auto;
+    width:50%;
+    background-color:rgb(60, 32, 97);
+}
+.ChapterEntry{
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    border:1px solid grey;
+    background-color:green;
+    width:90%;
+    margin:auto;
+    padding:10px 20px;
+}
+.ChapterDate{
+    color:rgb(121, 121, 121);
+    margin-left: auto;
+    text-align: right;
+}
+.ChapterEntry:nth-child(odd){
+   
+    background-color:rgb(55, 28, 90);
+}
+.ChapterEntry:nth-child(even){
+
+    background-color:rgb(41, 14, 77); 
+}
+.ListDisplayHeader{
+    text-align: right;
+}
+.PageArrow{
+    cursor: pointer;
+}

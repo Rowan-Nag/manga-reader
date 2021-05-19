@@ -1,0 +1,18 @@
+.MangaTitle{
+    color:darkblue;
+    font-size: 20px;
+}
+.MangaDescription{
+    max-height:160px;
+    color:black;
+    text-overflow: clip;
+}
+.MangaContainer{
+    padding:10px;
+    margin:10px;
+    border-radius: 20px;
+    max-height:200px;
+    background-color: lightblue;
+    overflow-y: hidden
+    ;
+}

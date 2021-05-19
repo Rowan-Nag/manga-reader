@@ -1,0 +1,9 @@
+.Chapter{
+    display: flex;
+    flex-direction: column;
+}
+img{
+    margin:auto;
+    max-height:100vh;
+    max-width: 90vh;
+}
