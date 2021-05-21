@@ -3,7 +3,6 @@ import './Chapter.css'
 
 function Chapter(props){
     const [images, setImages] = useState([])
-    let mangaId = props.id
     let data = props.data;
 
     useEffect(()=>{
@@ -16,12 +15,12 @@ function Chapter(props){
             })
                 .then(res => res.json())
                 .then((node)=>{
-                    console.log(node);
+                    //console.log(node);
                     setImages(data.attributes.dataSaver.map((imgSuffix)=>{
-                        return (<img src={node.baseUrl + "/data-saver/" + data.attributes.hash + "/"+ imgSuffix} alt="Failed to Load"></img>)
+                        return (<img src={node.baseUrl + "/data-saver/" + data.attributes.hash + "/"+ imgSuffix} alt="Failed to Load" key = {imgSuffix}></img>)
                     }))
                 })
-    }, [props.id, props.data])
+    }, [props.id, data, data.attributes.dataSaver, data.attributes.hash, data.id])
     return(
 
         <div className="Chapter">

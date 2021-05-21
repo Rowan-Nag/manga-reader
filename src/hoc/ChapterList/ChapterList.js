@@ -6,7 +6,8 @@ function ChapterList(props){
   
     const [chapterList, setChapterList] = useState(null)
     const [pageNumber, setPageNumber] = useState(0)
-    const [readerVisibility, setReaderVisibility] = useState("none")
+    const [showReader, setShowReader] = useState(false);
+   
     const [readerCh, setReaderCh] = useState(null);
 
 
@@ -16,16 +17,10 @@ function ChapterList(props){
 
     // }
 
-    // let toggleVisible = ()=>{
-    //     if(hidden === "none"){
-    //         setHidden("block")
-    //         setSymbol("X")
-    //     }
-    //     else{
-    //         setHidden("none")
-    //         setSymbol("+")
-    //     }
-    // }
+    let toggleReader = ()=>{
+        //console.log("Toggle Reader")
+        setShowReader(!showReader)
+    }
     let title = "No Title Loaded"
     let description = "No Description Loaded"
     if(props.data !== ""){
@@ -35,7 +30,7 @@ function ChapterList(props){
     
     useEffect(()=>{
         if(props.data !== "" && chapterList === null){
-            fetch("https://api.mangadex.org/chapter?order[chapter]=desc&limit=20&translatedLanguage=en&manga=" + props.data.id + "&offset=" + (20*pageNumber).toString(), {
+            fetch("https://api.mangadex.org/chapter?order[chapter]=asc&limit=20&translatedLanguage=en&manga=" + props.data.id + "&offset=" + (20*pageNumber).toString(), {
                 method: 'GET',
                 headers: {
                     Accept: 'application/json',
@@ -51,7 +46,8 @@ function ChapterList(props){
                         <div className="ChapterEntry" 
                         key = {ch.data.id}
                         onClick={()=>{
-                            setReaderVisibility("flex")
+                            toggleReader()
+                            
                             setReaderCh(ch)
                             
                         }}>
@@ -66,7 +62,7 @@ function ChapterList(props){
     })
 
     return(
-        <div>
+        <div className="ChapterList">
             
             <div className="ListContainer">
                 <div className="ListInner">
@@ -100,8 +96,8 @@ function ChapterList(props){
                 </div>
             
             </div>
-            
-            <Reader ch = {readerCh} visibility = {readerVisibility} setReaderVisibility = {setReaderVisibility}/>
+            {showReader ? <Reader ch = {readerCh} toggleReader = {toggleReader}/> : null}
+            {/* <Reader ch = {readerCh} visibility = {readerVisibility} setReaderVisibility = {setReaderVisibility}/> */}
         </div>
     )
 }

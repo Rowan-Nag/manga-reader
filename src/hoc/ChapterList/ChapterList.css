@@ -1,13 +1,16 @@
+.ChapterList{
+    
+    left:0px;
+    top:0px;
+    bottom:0px;
+    position:absolute;
+    background-color: rgb(53, 12, 107);
+}
 .ListContainer{
     width: 100%;
     min-height: 100%;
-    left:0px;
-    top:0px;
-    position:absolute;
-    background-color: rgb(53, 12, 107);
-    opacity: 1;
+    
 
-    transition: opacity .1s ease;
 }
 .ListInner{
     margin:auto;

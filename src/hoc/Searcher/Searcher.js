@@ -17,7 +17,7 @@ function Searcher(){
         }else{
             setSymbol("X")
         }
-        console.log(chapterListShown)
+        //console.log(chapterListShown)
         setChapterListShown(!chapterListShown);
        
     }
@@ -32,9 +32,6 @@ function Searcher(){
         }
     }
 
-    let test = ()=>{
-        return (<div>Hello.</div>)
-    }
 
     let searchInput = (<input placeholder="frieren" onChange={e =>{setSearchQuery(e.target.value)}}></input>)
     let search = ()=>{

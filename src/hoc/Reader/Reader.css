@@ -10,10 +10,16 @@
     flex-direction: row;
 }
 .ReaderSidebar{
+    background-color: rgb(31, 10, 58);
     padding:20px;
     width:15%;
 }
-.ReaderSidebar div{
+.ReaderSidebarContent{
+    height:100vh;
+    position:fixed;
+}
+.ReaderSidebarContent div{
+    margin-left:30px;
     margin:20px 0;
 }
 .ReaderBackButton{

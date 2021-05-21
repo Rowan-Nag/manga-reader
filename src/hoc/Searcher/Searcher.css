@@ -15,6 +15,9 @@ input{
     top:35px;
     left:15px;
     cursor:pointer;
+
+    background-color:rgb(36, 9, 85);
+    border-radius: 8px;
 }
 .ListClose:hover{
     color:rgb(138, 111, 61)
