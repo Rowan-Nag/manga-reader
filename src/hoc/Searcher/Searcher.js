@@ -63,8 +63,8 @@ function Searcher(){
             {showChapterList()}
             Search for manga: <p></p>
             {searchInput}
-            <button onClick={search}>Search</button>
-            <div id="mangaContainer"><br/>{manga}</div>
+            <button className="SearchButton" onClick={search}>Search</button>
+            <div className="SearchContainer"><br/>{manga}</div>
             <div className="ListClose" onClick={toggleVisible}>{closeSymbol}</div>
         </div>
         
