@@ -9,6 +9,11 @@
     display:flex;
     flex-direction: row;
 }
+.ReaderChapterInfo{
+
+    padding:10px;
+    background-color: rgb(46, 9, 95);
+}
 .ReaderSidebar{
     background-color: rgb(31, 10, 58);
     padding:20px;
@@ -35,5 +40,12 @@
     background-color: rgb(24, 5, 32);;
 }
 .NavigationButtons div{
+    user-select: none;
+    margin:0px;
+    border-radius: 5px;
+    padding:10px;
     cursor: pointer;
+}
+.NavigationButtons div:hover{
+    background-color:rgb(69, 73, 196);
 }

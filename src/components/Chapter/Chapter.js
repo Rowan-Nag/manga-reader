@@ -16,11 +16,22 @@ function Chapter(props){
                 .then(res => res.json())
                 .then((node)=>{
                     //console.log(node);
-                    setImages(data.attributes.dataSaver.map((imgSuffix)=>{
-                        return (<img src={node.baseUrl + "/data-saver/" + data.attributes.hash + "/"+ imgSuffix} alt="Failed to Load" key = {imgSuffix}></img>)
-                    }))
+                    if(node.result === "error"){
+                        node.errors.map(error=>{
+                            console.error(error.status + " ERROR: " + error.detail)
+                            return false
+                        })
+                    }
+                    else{
+                        setImages(data.attributes.dataSaver.map((imgSuffix)=>{
+                            return (<img src={node.baseUrl + "/data-saver/" + data.attributes.hash + "/"+ imgSuffix} alt="Failed to Load" key = {imgSuffix}></img>)
+                        }))
+                    }
                 })
     }, [props.id, data, data.attributes.dataSaver, data.attributes.hash, data.id])
+    
+    
+
     return(
 
         <div className="Chapter">

@@ -1,5 +1,6 @@
 import '../Searcher/Searcher.css'
-import ChapterList from "../ChapterList/ChapterList"
+//import ChapterList from "../ChapterList/ChapterList"
+import ChapterFeed from "../ChapterFeed/ChapterFeed"
 import MangaCard from "../../components/MangaCard/MangaCard"
 import React, { useState } from 'react';
 
@@ -23,10 +24,9 @@ function Searcher(){
     }
 
     let showChapterList = ()=>{
-        console.log("ran")
         if(chapterListShown){
-            console.log("loaded")
-            return (<ChapterList data={readerData}/>)
+            // return (<ChapterList data={readerData}/>)
+            return (<ChapterFeed data={readerData}/>)
         }else{
             return null
         }
@@ -39,18 +39,26 @@ function Searcher(){
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result)
-                    setManga(result.results.map((manga)=>{
-                        if(manga.data.attributes.contentRating === "safe"){
-                            return(<MangaCard 
-                                data={manga.data} 
-                                setReaderData = {setReaderData} 
-                                toggleVisible = {toggleVisible}
-                                key = {manga.data.id} />)
-                        }
-                        return null
-                    }))
                     
+                    console.log(result)
+                    if(result.result === "error"){
+                        result.errors.map(error=>{
+                            console.error(error.status + " ERROR: " + error.detail)
+                            return false;
+                        })
+                    }
+                    else{
+                        setManga(result.results.map((manga)=>{
+                            if(manga.data.attributes.contentRating === "safe"){
+                                return(<MangaCard 
+                                    data={manga.data} 
+                                    setReaderData = {setReaderData} 
+                                    toggleVisible = {toggleVisible}
+                                    key = {manga.data.id} />)
+                            }
+                            return null
+                        }))
+                    }
                 },
                 (error) => {
                     alert(error)
