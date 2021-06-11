@@ -1,6 +1,9 @@
 import './ChapterList.css'
 import Reader from "../Reader/Reader"
 import { useEffect, useState } from 'react';
+
+import * as History from "../History/History";
+
 function ChapterList(props){
     //const [hidden, setHidden] = useState(props.display)
   
@@ -53,7 +56,7 @@ function ChapterList(props){
                             key = {ch.data.id}
                             onClick={()=>{
                                 toggleReader()
-                                
+                                History.updateHistory(ch.data.attributes.title, ch.data.attributes.chapter)
                                 setReaderCh(ch)
                                 
                             }}>

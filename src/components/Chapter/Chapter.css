@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
 }
-img{
+.ChapterImg{
     margin:auto;
     max-height:100vh;
     max-width: 90vh;

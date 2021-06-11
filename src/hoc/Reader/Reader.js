@@ -2,14 +2,14 @@
 import './Reader.css'
 
 import Chapter from "../../components/Chapter/Chapter"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function Reader(props){
 
     const [currentChapter, setCurrentChapter] = useState(props.ch.data.attributes.chapter)
-    
+    const [chFeed, setChFeed] = useState(props.chFeed)
     let nextChapter = ()=>{
-        if(currentChapter+1 < props.chFeed.length){
+        if(currentChapter+1 < chFeed.length){
             setCurrentChapter(currentChapter-1+2)
         }
         else{
@@ -24,8 +24,38 @@ function Reader(props){
         }
     }
 
-    let chData = props.chFeed[currentChapter-1].data;
-    console.log(chData)
+    useEffect(()=>{
+        
+        if(!chFeed){
+            
+            fetch("https://api.mangadex.org/manga/"+ props.mangaId + "/feed?translatedLanguage[]=en&order[chapter]=asc&limit=500", {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                  }
+            })
+                .then(res => res.json())
+                .then((chapters)=>{
+                    //console.log(chapters)
+                    if(chapters.result === "error"){
+                        chapters.errors.map(error=>{
+                            console.error(error.status + " ERROR: " + error.detail)
+                            return false;
+                        })
+                    }
+                    else{
+                        setChFeed(chapters.results);
+                        //console.log(chFeed)
+                    }
+                }
+                    
+                )
+        }
+    }, [chFeed, props.mangaId])
+
+    let chData = chFeed ? chFeed[currentChapter-1].data : props.ch.data;
+    //console.log(chData)
     return(
         <div className="Reader">
             <div className="ReaderSidebar">

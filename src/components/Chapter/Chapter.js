@@ -24,7 +24,7 @@ function Chapter(props){
                     }
                     else{
                         setImages(data.attributes.dataSaver.map((imgSuffix)=>{
-                            return (<img src={node.baseUrl + "/data-saver/" + data.attributes.hash + "/"+ imgSuffix} alt="Failed to Load" key = {imgSuffix}></img>)
+                            return (<img className="ChapterImg" src={node.baseUrl + "/data-saver/" + data.attributes.hash + "/"+ imgSuffix} alt="Failed to Load" key = {imgSuffix}></img>)
                         }))
                     }
                 })

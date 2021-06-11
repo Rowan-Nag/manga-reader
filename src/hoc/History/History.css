@@ -1,0 +1,44 @@
+.HistoryBar{
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
+}
+.HistoryText{
+    overflow-wrap: normal;
+    word-wrap: normal;
+    position:relative;
+    top: 70px;
+    cursor: pointer;
+    
+}
+.HistoryCard{
+    text-align: center;
+    text-shadow: 1px 2px 5px black;
+    background-repeat: no-repeat;
+    background-size: 150px;
+    width: 180px;
+    height:180px;
+    background-color: rgb(136, 136, 179);
+    background-position: center;
+    padding:20px;
+    margin:5px;
+    border-radius: 2px;
+    
+}
+.HistoryTitle{
+    font-size: 1.1em;
+    font-weight:bold;
+}
+.HistoryClose{
+    border-radius: 5px;
+    padding: 2px;
+    text-align: center;
+    font-weight: bolder;
+    width:20px;
+    height:20px;
+    background-color: #6161a9;
+    position:relative;
+    top:2px;
+    
+}

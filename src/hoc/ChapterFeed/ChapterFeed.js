@@ -1,6 +1,8 @@
 import '../ChapterList/ChapterList.css'
 import Reader from "../Reader/Reader"
 import { useEffect, useState } from 'react';
+import * as History from "../History/History.js";
+
 function ChapterFeed(props){
     //const [hidden, setHidden] = useState(props.display)
   
@@ -29,7 +31,7 @@ function ChapterFeed(props){
     
     useEffect(()=>{
         if(props.data !== "" && chapterList == null){
-            fetch("https://api.mangadex.org/manga/"+ props.data.id + "/feed?translatedLanguage[]=en&order[chapter]=asc", {
+            fetch("https://api.mangadex.org/manga/"+ props.data.id + "/feed?translatedLanguage[]=en&order[chapter]=asc&limit=500", {
                 method: 'GET',
                 headers: {
                     Accept: 'application/json',
@@ -54,7 +56,7 @@ function ChapterFeed(props){
                             key = {ch.data.id}
                             onClick={()=>{
                                 toggleReader()
-                                
+                                History.updateHistory(props.data.attributes.title.en, ch, props.data.id);
                                 setReaderCh(ch)
                                 
                             }}>
