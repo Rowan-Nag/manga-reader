@@ -4,6 +4,7 @@
 }
 .ChapterImg{
     margin:auto;
-    max-height:100vh;
+    /* max-height:100vh; */
     max-width: 90vh;
+    min-width:400px;
 }

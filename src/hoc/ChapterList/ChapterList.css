@@ -1,10 +1,11 @@
 .ChapterList{
-    
+    z-index: 3;
+
     left:0px;
     top:0px;
     
     position:absolute;
-    background-color: rgb(53, 12, 107);
+    background-color: rgb(21 15 31 / 89%);
 }
 .ListContainer{
     width: 100%;
@@ -49,6 +50,7 @@
     margin:auto;
     padding:10px 20px;
 }
+
 .ChapterDate{
     color:rgb(121, 121, 121);
     margin-left: auto;
@@ -61,6 +63,14 @@
 .ChapterEntry:nth-child(even){
 
     background-color:rgb(41, 14, 77); 
+}
+.ChapterEntry:nth-child(odd):hover{
+   
+    background-color:rgb(79, 53, 114);
+}
+.ChapterEntry:nth-child(even):hover{
+
+    background-color:rgb(79, 53, 114);
 }
 .ListDisplayHeader{
     text-align: right;

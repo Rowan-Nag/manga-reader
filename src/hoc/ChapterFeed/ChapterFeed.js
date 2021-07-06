@@ -31,7 +31,7 @@ function ChapterFeed(props){
     
     useEffect(()=>{
         if(props.data !== "" && chapterList == null){
-            fetch("https://api.mangadex.org/manga/"+ props.data.id + "/feed?translatedLanguage[]=en&order[chapter]=asc&limit=500", {
+            fetch("https://lit-taiga-28516.herokuapp.com/https://api.mangadex.org/manga/"+ props.data.id + "/feed?translatedLanguage[]=en&order[chapter]=asc&limit=500", {
                 method: 'GET',
                 headers: {
                     Accept: 'application/json',

@@ -1,0 +1,25 @@
+.CoverCard{
+    box-shadow: 3px 3px 5px black;
+    text-align: center;
+    text-shadow: 1px 2px 5px black;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    background-size: cover;
+    width: 20%;
+    height:40%;
+    background-color: rgb(136, 136, 179);
+    background-position: center;
+    padding:1%;
+    margin:auto;
+    border-radius: 2px;
+    
+}
+
+.CoverCard:hover{
+    opacity:1;
+}
+.CoverCardTitle{
+    background-color: rgba(0, 0, 0, 0.2);
+    font-size: 1.1em;
+    font-weight:bold;
+}

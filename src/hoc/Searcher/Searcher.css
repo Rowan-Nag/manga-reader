@@ -5,6 +5,7 @@
     margin:auto;
     display: flex;
     flex-direction: column;
+    
 }
 .SearchIntro{
     display: flex;
@@ -12,29 +13,59 @@
     margin: auto 0;
     justify-content: center;
 }
-.SearchCover{
-    opacity: 0.3;
+.SearchIntro .CoverCard{
+    min-width:200px;
 }
-
-.SearchIntroPrompt{
+.SearchIntroInitial{
+    flex-direction: row;
+    margin: auto 0;
+    justify-content: center;
+}
+.SearchIntroInitial .SearchIntroPrompt{
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    width:40%;
+    min-width:400px;
     margin:auto;
     justify-content: center;
     font-size: 4.3em;
     color:#c9c9ff;
+    text-shadow: 5px 4px 1px black;
+    font-family: 'Bangers', cursive;
+    position:relative;
+    bottom:400px;
+}
+.SearchCover{
+    max-width: 400px;
+    width:auto;
+    opacity: 0.3;
+    box-shadow: 3px 3px 5px black;
+}
+
+.SearchIntroPrompt{
+    
+    width:40%;
+    margin:auto;
+    justify-content: center;
+    font-size: 4.3em;
+    color:#c9c9ff;
+    text-shadow: 5px 4px 1px black;
     font-family: 'Bangers', cursive;
 }
 input{
     background-color: #cacaca;
     width:80%;
-    height:50px;
     font-size: 20px;
 }
 .searchInputContainer{
+    font-family: 'Bangers', cursive;
     width:100%;
     display: flex;
     flex-direction: row;
+    height:38px;
 }
 .SearchButton{
+    font-family: 'Bangers', cursive;
     width:20%;
     background-color: #b791ef;
     color: black;
@@ -44,6 +75,7 @@ input{
     /* background-color: rgb(147, 201, 221); */
 }
 .ListClose{
+    z-index: 4;
     width:50px;
     height:50px;
     font-size: 30px;
@@ -59,3 +91,8 @@ input{
     color:rgb(138, 111, 61)
 }
 
+@media only screen and (max-device-width: 812px){
+    .SearchIntroPrompt{
+        display: none;
+    }
+}

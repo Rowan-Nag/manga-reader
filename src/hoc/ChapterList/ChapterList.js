@@ -32,7 +32,7 @@ function ChapterList(props){
     
     useEffect(()=>{
         if(props.data !== "" && chapterList === null){
-            fetch("https://api.mangadex.org/chapter?order[chapter]=asc&limit=20&translatedLanguage[]=en&manga=" + props.data.id + "&offset=" + (20*pageNumber).toString(), {
+            fetch("https://lit-taiga-28516.herokuapp.com/https://api.mangadex.org/chapter?order[chapter]=asc&limit=20&translatedLanguage[]=en&manga=" + props.data.id + "&offset=" + (20*pageNumber).toString(), {
                 method: 'GET',
                 headers: {
                     Accept: 'application/json',

@@ -1,8 +1,10 @@
 .HistoryBar{
+    width:100%;
     position: absolute;
     bottom: 0px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 .HistoryText{
     overflow-wrap: normal;
@@ -13,10 +15,12 @@
     
 }
 .HistoryCard{
+    box-shadow: 3px 3px 5px black;
     text-align: center;
     text-shadow: 1px 2px 5px black;
     background-repeat: no-repeat;
-    background-size: 150px;
+    opacity: 0.7;
+    background-size: 220px;
     width: 180px;
     height:180px;
     background-color: rgb(136, 136, 179);
@@ -25,6 +29,10 @@
     margin:5px;
     border-radius: 2px;
     
+}
+
+.HistoryCard:hover{
+    opacity:1;
 }
 .HistoryTitle{
     font-size: 1.1em;
@@ -41,4 +49,17 @@
     position:relative;
     top:2px;
     
+}
+@media only screen and (max-device-width: 812px){
+    .HistoryBar{
+        top:812px;
+    }
+    .HistoryCard{
+        font-size: 13px;
+        width:100px;
+        height:180px;
+    }
+    .HistoryText{
+        top:20px;
+    }
 }

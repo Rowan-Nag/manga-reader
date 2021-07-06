@@ -6,17 +6,34 @@ export function updateHistory(mangaTitle, ch, mangaId){
 
     let alreadyExists = false;
     let history = JSON.parse(localStorage.getItem('lastRead'));
+    
+    let pos = null;
+    
     if(history){
-        history = history.map((entry)=>{
+        history = history.map((entry, index)=>{
+           
+
             if(entry["title"] === mangaTitle){
                 alreadyExists = true;
+                pos = index
                 return {"title":mangaTitle, "data":ch.data, "mangaId":mangaId}
             }else{
+               
                 return entry;
             }
         })
+        
+        if(pos){
+            let temp = history[pos]
+            history[pos] = history[0]
+            history[0] = temp
+        }
+
         if(!alreadyExists){
             history = [{"title":mangaTitle, "data":ch.data, "mangaId":mangaId}, ...history]
+        }
+        if(history.length > 5){
+            history = history.slice(0, 5)
         }
     }else{
         history = [{"title":mangaTitle, "data":ch.data, "mangaId":mangaId}]
@@ -53,40 +70,42 @@ export function HistoryBar(props){
 
     useEffect(()=>{
         let history = JSON.parse(localStorage.getItem('lastRead'));
-        let ids = history.map((entry)=>{
-            return entry.mangaId
-        })
-        //console.log("https://api.mangadex.org/cover?limit=100&manga[]="+ids.join('&manga[]='))
-        fetch("https://api.mangadex.org/cover?limit=100&manga[]="+ids.join('&manga[]='), {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-              }
-        }).then(res => res.json())
-        .then(
-            (result) => {
-                
-                console.log(result)
-                if(result.result === "error"){
-                    result.errors.map(error=>{
-                        console.error(error.status + " ERROR: " + error.detail)
-                        return false;
-                    })
-                }
-                else{
-                    let c = {}
-                    result.results.map((cover)=>{
-                        if(cover.relationships){
-                            if(cover.relationships[0].type==="manga"){
-                                c[cover.relationships[0].id] = cover.data.attributes.fileName
-                            }
-                        }
-                    })
-                    setCovers(c)
-                    //console.log(c)
-                }
+        if(history){
+            let ids = history.map((entry)=>{
+                return entry.mangaId
             })
+            //console.log("https://api.mangadex.org/cover?limit=100&manga[]="+ids.join('&manga[]='))
+            fetch("https://lit-taiga-28516.herokuapp.com/https://api.mangadex.org/cover?limit=100&manga[]="+ids.join('&manga[]='), {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                }
+            }).then(res => res.json())
+            .then(
+                (result) => {
+                    
+                    console.log(result)
+                    if(result.result === "error"){
+                        result.errors.map(error=>{
+                            console.error(error.status + " ERROR: " + error.detail)
+                            return false;
+                        })
+                    }
+                    else{
+                        let c = {}
+                        result.results.map((cover)=>{
+                            if(cover.relationships){
+                                if(cover.relationships[0].type==="manga"){
+                                    c[cover.relationships[0].id] = cover.data.attributes.fileName
+                                }
+                            }
+                        })
+                        setCovers(c)
+                        //console.log(c)
+                    }
+                })
+            }
     }, [count])
 
 
@@ -125,6 +144,7 @@ export function HistoryBar(props){
         setShowReader(true)
         console.log(true)
     }
+
     return(
         <div className="History">
             {showReader ? reader : null}

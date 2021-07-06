@@ -21,7 +21,7 @@ function MangaCard(props){
             
             return (<ul className="MangaAltTitles">
                 {
-                props.data.attributes.altTitles.slice(0, 4).map((title, index)=>{
+                props.data.attributes.altTitles.slice(0, 2).map((title, index)=>{
                     return (<li key = {index}>{title.en}</li>)
                 })
                 }

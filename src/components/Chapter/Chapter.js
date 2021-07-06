@@ -6,7 +6,7 @@ function Chapter(props){
     let data = props.data;
 
     useEffect(()=>{
-        fetch("https://api.mangadex.org/at-home/server/" + data.id, {
+        fetch("https://lit-taiga-28516.herokuapp.com/https://api.mangadex.org/at-home/server/" + data.id, {
                 method: 'GET',
                 headers: {
                     Accept: 'application/json',
