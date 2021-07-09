@@ -60,7 +60,7 @@ function Searcher(){
                         if(result.results[0]){
                             let file = result.results[0].data.attributes.fileName
                             setCoverFileName("https://uploads.mangadex.org/covers/" + history[0].mangaId + "/" + file)
-                            console.log("file: " + file)
+                            //console.log("file: " + file)
                         }
                     }
                 })
@@ -145,9 +145,10 @@ function Searcher(){
             
             <div className="SearchContainer"><br/>
             {manga}
-                {searchIntro()}
+                
                 
             </div>
+            {searchIntro()}
             <div className="ListClose" onClick={toggleVisible}>{closeSymbol}</div>
         </div>
         

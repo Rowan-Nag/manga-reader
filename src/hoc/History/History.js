@@ -115,7 +115,7 @@ export function HistoryBar(props){
         if(history != null){
             return history.map((data)=>{
                 let imgUrl = "url(https://uploads.mangadex.org/covers/"+ data.mangaId + "/" + (covers ? covers[data.mangaId]: null) + ")"
-                console.log(imgUrl)
+                //console.log(imgUrl)
                 return (<div className="HistoryCard" style={{"background-image": imgUrl }}>
                     {/* <img src={imgUrl} alt = {"HERE"}/> */}
                     <div className="HistoryClose" onClick={()=>{

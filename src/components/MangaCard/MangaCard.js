@@ -37,7 +37,7 @@ function MangaCard(props){
             {title()}
             {altTitles()}
         </p>
-        <p className="MangaDescription">Description: {props.data.attributes.description.en}</p>
+        <p className="MangaDescription">{props.data.attributes.description.en}</p>
         </div>
     )
 }

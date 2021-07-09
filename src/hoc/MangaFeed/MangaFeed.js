@@ -81,8 +81,11 @@ function MangaFeed(props){
                     setManga(Object.values(mangaData).map((manga, index)=>{
                         return (<CoverCard 
                             key = {index}
+                            data = {manga}
                             title={manga.attributes.title.en}
                             coverUrl={"url(https://uploads.mangadex.org/covers/"+manga.id+"/"+manga.coverUrl+")"}
+                            setReaderData={props.setReaderData}
+                            toggleVisible={props.toggleVisible}
                             />)
                     }))
                 }

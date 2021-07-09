@@ -1,19 +1,31 @@
 .MangaTitle{
-    color:darkblue;
-    font-size: 20px;
+    font-size: 30px;
+    letter-spacing: 1px;
+    font-family: bangers;
+    color:white;
+   
     cursor: pointer;
 }
 .MangaDescription{
+    letter-spacing: .9px;
+    font-family: bangers;
+    color:#c5c723;
     max-height:160px;
-    color:black;
+    
     text-overflow: clip;
 }
 .MangaContainer{
-    padding:10px;
-    padding: 10px 0;
+    
+    border: 5px solid #ffffad;
+    border-radius: 5px;
+    margin:15px 10px;
+    padding:20px;
     max-height:200px;
     background-color: rgb(173, 215, 230);
     overflow-y: hidden;
+}
+.MangaContainer p{
+    margin:auto;
 }
 .MangaAltTitles{
     list-style-type: none;
@@ -23,9 +35,9 @@
 }
 .MangaContainer:nth-child(odd){
    
-    background-color:#bcabd6;
+    background-color:#290f52;
 }
 .MangaContainer:nth-child(even){
 
-    background-color:#a08bbe;
+    background-color:rgb(44 23 74);
 }

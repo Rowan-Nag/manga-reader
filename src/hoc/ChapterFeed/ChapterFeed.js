@@ -40,7 +40,7 @@ function ChapterFeed(props){
             })
                 .then(res => res.json())
                 .then((chapters)=>{
-                    console.log(chapters)
+                    //console.log(chapters)
                     if(chapters.result === "error"){
                         chapters.errors.map(error=>{
                             console.error(error.status + " ERROR: " + error.detail)
@@ -48,21 +48,39 @@ function ChapterFeed(props){
                         })
                     }
                     else{
+                        let urlRegex = "(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
                         setFullChapterFeed(chapters.results);
+                        console.log(chapters.results)
                         setChapterList(chapters.results.map((ch)=>{
-                            
-                            return (
-                            <div className="ChapterEntry" 
-                            key = {ch.data.id}
-                            onClick={()=>{
-                                toggleReader()
-                                History.updateHistory(props.data.attributes.title.en, ch, props.data.id);
-                                setReaderCh(ch)
-                                
-                            }}>
-                                <span className="ChapterText"><b>ch. {ch.data.attributes.chapter}</b> {ch.data.attributes.title}</span>
-                                <span className="ChapterDate">{ch.data.attributes.publishAt.substring(0, 10)}</span>
-                            </div>)
+                            if(ch.data.attributes.data[0].match(urlRegex)){
+                                return (
+                                    <div className="ChapterEntry" 
+                                    key = {ch.data.id}
+                                    onClick={()=>{
+                                    
+                                    
+                                }}>
+                                    <a href={ch.data.attributes.data[0]} target="_blank">
+                                        <span className="ChapterText"><b>ch. {ch.data.attributes.chapter}</b> {ch.data.attributes.title}</span>
+                                        <span className="ChapterWarning"> Link will open in a new tab! </span>
+                                        <span className="ChapterDate">{ch.data.attributes.publishAt.substring(0, 10)}</span>
+                                    </a>
+                                </div>)
+                            }
+                            else{
+                                return (
+                                    <div className="ChapterEntry" 
+                                    key = {ch.data.id}
+                                    onClick={()=>{
+                                        toggleReader()
+                                        History.updateHistory(props.data.attributes.title.en, ch, props.data.id);
+                                        setReaderCh(ch)
+                                        
+                                    }}>
+                                        <span className="ChapterText"><b>ch. {ch.data.attributes.chapter}</b> {ch.data.attributes.title}</span>
+                                        <span className="ChapterDate">{ch.data.attributes.publishAt.substring(0, 10)}</span>
+                                    </div>)
+                            }
                         }))
                         
                     }
@@ -85,8 +103,11 @@ function ChapterFeed(props){
                 <div className="ListInner">
                     <p>manga-id: {props.data.id}</p>
                     <div className="ListInfo">
-                        <p className="ListTitle">{title}</p>
+                        <div className="ListInfoHeader">
+                            {props.data.image ? <img className="ListCover" src={props.data.image.substring(4,props.data.image.length-1)} alt="Cover"/> : null}
+                            <p className="ListTitle">{title}</p>
 
+                        </div>
                         <p className="ListDesc">{description}</p>
 
                     </div>

@@ -25,7 +25,10 @@
     background-color:rgb(41, 12, 80);
 }
 .ListTitle{
-    font-size: 24px;
+    text-shadow: 4px 4px 4px black;
+    margin:auto;
+    font-family: bangers;
+    font-size: 35px;
 }
 .ListDesc{
     padding-left:20px
@@ -40,6 +43,19 @@
     width:50%;
     background-color:rgb(60, 32, 97);
 }
+.ListDisplayHeader{
+    -webkit-user-select: none;       
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none; 
+}
+.ListInfoHeader{
+    display: flex;
+    flex-direction: row;
+}
+.ListCover{
+    width:40%;
+}
 .ChapterEntry{
     display: flex;
     flex-direction: row;
@@ -50,7 +66,27 @@
     margin:auto;
     padding:10px 20px;
 }
-
+.ChapterEntry a{
+    display:flex;
+    width:100%;
+    text-decoration: none;
+    color:white;
+    margin:auto;
+}
+a{
+    text-decoration: none;
+    color:white; 
+}
+.ChapterWarning{
+    letter-spacing: 1.5px; 
+    font-family: bangers;
+    margin:auto;
+    color:yellow;
+    padding: 2px;
+    border-radius: 2px;
+    /* background-color: rgba(0, 0, 0, .2); */
+    text-shadow: 2px 2px 2px black;
+}
 .ChapterDate{
     color:rgb(121, 121, 121);
     margin-left: auto;
@@ -77,4 +113,6 @@
 }
 .PageArrow{
     cursor: pointer;
+    padding:0px 5px;
+    background-color: rgba(0, 0, 0, .5);
 }

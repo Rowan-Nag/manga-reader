@@ -22,7 +22,12 @@ function CoverCard(props){
     // }, [props.shouldFetch, props.coverId, coverUrl])
     //console.log(props.coverUrl)
     return(
-        <div className="CoverCard" style={{"background-image": props.coverUrl }}>
+        <div className="CoverCard"
+            style={{"background-image": props.coverUrl }} 
+            onClick={()=>{
+                props.setReaderData({...props.data, "image": props.coverUrl})
+                props.toggleVisible()
+            }}>
             <span className="CoverText">
                 
                 <div className="CoverCardTitle">
